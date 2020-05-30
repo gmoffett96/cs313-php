@@ -57,6 +57,7 @@ table {
 
 <h3>It is here that you may create a new user.  Insert their information and the table will be
 updated.  No need to insert a user ID number.  This number will automatically be created.</h3>
+<h3>Please insert reasonable amounts of data</h3>
 
 <form id="mainForm" action="add.php" method="POST">
 <table>

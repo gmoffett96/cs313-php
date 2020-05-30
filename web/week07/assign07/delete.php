@@ -50,7 +50,7 @@ table {
 <table>
     <tr>
     <td><p>What is the User ID? (All of this user's information will be removed)</p><td>
-        <td><input type="text" name="user_id" placeholder="User ID"></td>
+        <td><input type="text" name="user_id" placeholder="User ID" required></td>
         </tr>
         <tr>
         <td><input type="submit"></td>

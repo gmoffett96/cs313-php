@@ -27,6 +27,7 @@ try
 catch (Exception $ex)
 {
 	echo "Error with DB. Details: $ex";
+    header("location: assign07.php");
 	die();
 }
 
