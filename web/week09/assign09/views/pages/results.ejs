@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+      html {
+  background-color: #696969;
+  color: white;
+}
+body {
+  background-color: black;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: black;
+}
+
+ td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  background-color: black;
+  color: #BEBDB8;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+h1 {
+  text-align: center;
+  color: #BEBDB8;
+}
+h2 {
+  color: #BEBDB8;
+  text-align: center;
+  font-size: 50px;
+}
+h3 {
+  text-align: center;
+  color: #BEBDB8;
+}
+h5 {
+  text-align: right;
+  color: #BEBDB8;
+}
+p {
+  color: #BEBDB8;
+  text-align: center;
+}
+th {
+  text-align: center;
+  font-size: 20px;
+}
+
+table {
+  width: 95%;
+}
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Your Letter has been sent!</h2>
+  <p>Here is your information regarding the letter you just sent.</p>     
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Weight of Letter (in ounces)</th>
+        <th>Type of Letter</th>
+        <th>Total Cost</th>
+        <th>Letter's content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= ounces %></td>
+        <td><%= letterType %></td>
+        <td>$<%= cost %></td>
+        <td><%= letter %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
