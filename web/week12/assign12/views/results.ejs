@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        html {
+            background-color: black;
+            color: #BEBDB8;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: black;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            background-color: black;
+            color: #BEBDB8;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        h1 {
+            text-align: center;
+            color: #BEBDB8;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #BEBDB8;
+        }
+
+        h5 {
+            text-align: right;
+            color: #BEBDB8;
+        }
+
+        th {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        table {
+            width: 95%;
+        }
+        * {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+/*@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left; 
+  }*/
+  
+  .header-right {
+    float: none;
+  }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="results.ejs" class="logo">The Web Designers</a>
+        <div class="header-right">
+          <a class="active" href="results.ejs">Home</a>
+          <a href="contact.php">Contact</a>
+          <a href="aboutUs.php">About</a>
+        </div>
+      </div>
+    <h1>Employee Information</h1>
+    <h3>Welcome to the employee page.  This is where you can view all of the 
+        people in the company and their positions.  Insert your username and you will
+        be able to see everyone's information that you have more or the same amount of
+    authority as.</h3>
+    <hr>
+    <h3>When the username has been submitted, a table will be created and the table will display
+        all of the necessary information.
+    </h3>
+    <p>What is your username?</p>
+    <input type="text" id="username" name='username' placeholder="Username..."></input>
+    <button onclick="getStuff()">Get Table!</button>
+    <p id="results"></p>
+    <hr>
+    <h3>Thank you for being an employee at this company!</h3>
+</body>
+<script text="text/javascript">
+    function getStuff() {
+        /*$.get('/getResults', function (data) {
+            console.log("Back from the server with: ");
+            console.log(data.rows[0]); 
+            console.log(data.rows[0].lastname); 
+
+            var word = "";
+            for (let i = 0; i < data.rows.length; i++)
+            {
+                word += "<h4>" + data.rows[i].firstname + "</h4>";
+                word += "<h4>" + data.rows[i].lastname + "</h4>";
+            }
+            $("#results").html(word);
+        });*/
+        // comment 
+        $.ajax({url: '/getTable', 
+        type: 'POST',
+        dataType: 'json',
+        success: (data) => {
+            console.log(data);
+            username = document.getElementById("username").value;
+            console.log(username);
+            var newHTML = "";
+            newHTML += "<table>";
+            if (username == 'Smith30') {
+                for (let i = 0; i < data.rows.length; i++) {
+                    newHTML += "<tr>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].firstname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].lastname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].age + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].title + "</td>" + "</h4>";
+                    newHTML += "</tr>";
+                }
+                $("#results").html(newHTML);
+            }
+            else if (username == 'Limber45' || username == 'Ander22' || username == 'Smith35') {
+                for (let i = 1; i < data.rows.length; i++) {
+                    newHTML += "<tr>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].firstname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].lastname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].age + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].title + "</td>" + "</h4>";
+                    newHTML += "</tr>";
+                }
+                $("#results").html(newHTML);
+            }
+            else if (username == 'Denis37' || username == 'France30' || username == 'Kent25') {
+                for (let i = 4; i < data.rows.length; i++) {
+                    newHTML += "<tr>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].firstname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].lastname + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].age + "</td>" + "</h4>";
+                    newHTML += "<h4>" + "<td>" + data.rows[i].title + "</td>" + "</h4>";
+                    newHTML += "</tr>";
+                }
+                $("#results").html(newHTML);
+            }
+            newHTML += "</table>";
+        }
+    });
+}
+</script>
+
+</html>
